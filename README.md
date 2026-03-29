@@ -1,158 +1,161 @@
-# MoCKA Runtime
+﻿# MoCKA Runtime — Core Execution Engine
 
-**Core execution layer of the MoCKA artificial civilization system**
+<p align="center">
+  <img src="https://raw.githubusercontent.com/m-sirius-k/MoCKA/main/docs/images/mocka_overview.svg" width="800">
+</p>
 
-## Overview
+> **This is not a task scheduler. Not a cron job. Not a workflow engine.**
+> It is the engine that keeps the civilization loop running —
+> observation, record, incident, decision, action, audit — continuously.
+>
+> One entry point. Deterministic execution. Every action recorded.
 
-MoCKA Runtime is the foundational execution engine for the MoCKA (Model of Cybernetic Knowledge Architecture) artificial civilization system. It provides a minimal but complete runtime composed of five core engines that form a self-evolving knowledge generation loop.
+---
 
-This is not a typical AI application. Instead, MoCKA models the structural layers of a knowledge-generating civilization, implementing the runtime patterns through which intelligent systems can continuously evolve their understanding.
+## Position in mocka_Movement
 
-## Core Components
-
-The MoCKA runtime is composed of five essential engines:
-
-### 1. Runtime Engine
-Controls the execution cycle, managing the flow of data and processes through the civilization loop.
-
-### 2. Observatory Engine
-Observes and summarizes the system state, providing real-time awareness of the civilization's current knowledge configuration.
-
-### 3. Knowledge Core Engine
-Processes research, knowledge structures, theories, and philosophical principles. This is the intellectual center of the system.
-
-### 4. Storage Engine
-Persists civilization state snapshots, maintaining historical continuity and enabling recovery from failures.
-
-### 5. Audit Engine
-Verifies system integrity and produces audit information, ensuring consistency and accountability throughout the civilization loop.
-
-## Civilization Runtime Loop
-
-These engines form a cyclic structure that continuously evolves:
-
+<p align="center">
+  <img src="https://raw.githubusercontent.com/m-sirius-k/MoCKA/main/docs/images/mocka_architecture_v2.svg" width="720">
+</p>
 ```
-Runtime Engine
-     ↓
-Observatory Engine
-     ↓
-Knowledge Core Engine
-     ↓
-Storage Engine
-     ↓
-Audit Engine
-     ↓
-Next Cycle (Return to Runtime Engine)
+MoCKA (core · heart)
+      ↓
+mocka-knowledge-gate       ② Record
+      ↓
+mocka-transparency         ③ Incident · ④ Recurrence
+      ↓
+mocka-external-brain       ⑥ Decision
+      ↓
+[ mocka-runtime ]          ← ⑦ Action — YOU ARE HERE
+      ↓
+mocka-civilization         ⑧ Institutionalize
 ```
 
-This loop simulates knowledge evolution inside a civilization architecture, where each cycle generates new understanding and refines existing theories.
+**Loop step: ⑦ Action**
+Upstream: mocka-external-brain → sends decisions
+Downstream: MoCKA core → ledger records the execution
 
-## Knowledge Core Architecture
+---
 
-The Knowledge Core represents the intellectual layer of MoCKA, containing:
+## What this repository does
 
-- **Research Laboratory**: Generates experimental strategies
-- **Knowledge Graph**: Maintains structured knowledge relationships
-- **Theory Engine**: Produces abstract explanations of system behavior
-- **Philosophy Engine**: Maintains guiding principles for exploration
-- **Culture Engine**: Preserves successful strategies as cultural memory
-- **Institution Engine**: Transforms stable cultural knowledge into institutional rules
+<p align="center">
+  <img src="https://raw.githubusercontent.com/m-sirius-k/MoCKA/main/docs/images/mocka_loop_v2.svg" width="720">
+</p>
 
-## Ecosystem Structure
+mocka-runtime drives the entire civilization loop
+from a single deterministic entry point.
 
-MoCKA Runtime is part of a larger ecosystem of repositories:
+### Five Engine Architecture
 
+| Engine | Role |
+|---|---|
+| Runtime | Drives the execution loop |
+| Observatory | Monitors system state |
+| Knowledge Core | Manages knowledge accumulation |
+| Storage | Persists all events |
+| Audit | Verifies every execution |
+
+### Civilization Stage Progression
 ```
-MoCKA Ecosystem
-├── mocka-runtime (this repository)
-│   └── Core execution layer
-├── MoCKA-KNOWLEDGE-GATE
-│   └── Knowledge entry point and documentation hub
-├── mocka-civilization
-│   └── Civilization theory and model research
-├── mocka-transparency
-│   └── Verification and audit mechanisms
-├── mocka-external-brain
-│   └── External knowledge integration layer
-└── mocka-core-private
-    └── Internal experimental environment
+Primitive → Organized → Mature → Advanced → AGI-Aligned
 ```
 
-## Functional Domains
+The runtime tracks which stage the civilization has reached.
+Every loop cycle advances the stage.
 
-MoCKA encompasses the following functional domains:
+### Single Entry Point
+```
+All operations enter through one gate
+      ↓
+No side effects
+No hidden execution paths
+No unrecorded actions
+      ↓
+Every execution is reproducible and verifiable
+```
 
-- **Observation**: System state inspection and summarization
-- **Knowledge Generation**: Research experiments and knowledge updates
-- **Research Experimentation**: Testing theories and strategies
-- **Theory Formation**: Creating abstract models and explanations
-- **Philosophical Principles**: Maintaining core values and exploration guidelines
-- **Cultural Memory**: Preserving successful patterns and strategies
-- **Institutional Structures**: Codifying cultural knowledge into rules
-- **System Integrity Verification**: Ensuring consistency and correctness
+---
 
-## Design Principles
+## Quick Start
+```powershell
+# Step 1 — Verify the runtime is intact
+mocka-check
+# → LEDGER OK + ALL CHECKS PASSED
 
-### Architecture-First Approach
-MoCKA prioritizes clear system architecture and conceptual clarity over implementation optimization.
+# Step 2 — Run one civilization loop cycle
+mocka-loop
+# → Observation → Record → Incident → ... → Audit
+# → 1 event sealed into ledger.json
 
-### Knowledge Evolution
-The runtime is designed to support continuous evolution of knowledge structures, allowing the system to refine and improve its understanding over time.
+# Step 3 — Seal the execution
+mocka-seal "runtime execution complete"
+# → ALL CHECKS PASSED
+```
 
-### Institutional Memory
-Every cycle produces verifiable artifacts that document the system's reasoning, enabling institutional accountability and knowledge reproducibility.
-
-### Civilization Modeling
-MoCKA implements patterns observed in human knowledge systems: research, theory, philosophy, culture, and institutions operating in a feedback loop.
-
-## Research Motivation
-
-Most AI systems focus on individual models or agents. MoCKA instead focuses on **civilization structure** as a research domain.
-
-The project explores whether AI systems can be organized using layers similar to human knowledge systems:
-- Research (empirical investigation)
-- Theory (abstract models)
-- Philosophy (guiding principles)
-- Culture (successful patterns)
-- Institutions (codified rules)
-
-This architecture is referred to as **Artificial Civilization Architecture**.
-
-## Documentation
-
-Complete documentation for MoCKA Runtime includes:
-
-- **ARCHITECTURE.md**: Detailed explanation of each engine and system design
-- **CONCEPTS.md**: Conceptual framework for artificial civilization runtime
-- **API_REFERENCE.md**: Detailed API documentation and integration guide
-
-## Getting Started
-
-For researchers and developers interested in:
-- Understanding the MoCKA civilization model
-- Extending the runtime with custom engines
-- Integrating MoCKA with other systems
-
-Please refer to the documentation files and the broader MoCKA ecosystem repositories.
+---
 
 ## Status
 
-**Project Stage**: Early Research Implementation
+**Active Development**
+Part of the MoCKA deterministic governance architecture.
+Loop position: ⑦ Action
 
-- ✅ Core runtime architecture defined
-- ✅ Five essential engines implemented
-- 🔄 Civilization loop validation in progress
-- 🔄 Integration with broader ecosystem
+---
 
-## License
+## 日本語
 
-MoCKA Runtime is part of the MoCKA research project.
+### MoCKA Runtimeとは何か
 
-## Related Projects
+タスクスケジューラーではありません。cronジョブでもありません。
+文明ループを継続的に動かし続けるエンジンです——
+観測・記録・インシデント・決定・行動・監査を継続的に。
 
-- [MoCKA-KNOWLEDGE-GATE](https://github.com/m-sirius-k/MoCKA-KNOWLEDGE-GATE): Knowledge documentation and verification system
-- [MoCKA Main Repository](https://github.com/m-sirius-k/MoCKA): Core project documentation
+単一エントリポイント。決定論的実行。すべての行動が記録される。
 
-## References
+### mocka_Movementにおける位置づけ
+```
+MoCKA（コア・心臓部）
+      ↓
+mocka-knowledge-gate       ② Record
+      ↓
+mocka-transparency         ③ Incident · ④ Recurrence
+      ↓
+mocka-external-brain       ⑥ Decision
+      ↓
+[ mocka-runtime ]          ← ⑦ Action — ここです
+      ↓
+mocka-civilization         ⑧ 制度化
+```
 
-MoCKA is an experimental system exploring Artificial Civilization Architecture as a research domain. It demonstrates how AI systems can be structured to support institutional knowledge, reproducibility, and continuous evolution.
+**ループステップ：⑦ Action（行動）**
+上流：mocka-external-brain → 決定を送信
+下流：MoCKAコア → 実行を台帳に記録
+
+### 5エンジンアーキテクチャ
+
+| エンジン | 役割 |
+|---|---|
+| Runtime | 実行ループを駆動 |
+| Observatory | システム状態を監視 |
+| Knowledge Core | 知識蓄積を管理 |
+| Storage | 全イベントを永続化 |
+| Audit | 全実行を検証 |
+
+### 文明ステージ進行
+```
+Primitive → Organized → Mature → Advanced → AGI-Aligned
+```
+
+runtimeは文明がどのステージに達したかを追跡します。
+ループ一回転ごとにステージが進行します。
+
+### 単一エントリポイント
+
+すべての操作は1つのゲートを通ります。
+副作用なし。隠れた実行経路なし。記録されない行動なし。
+すべての実行が再現可能で検証可能です。
+
+---
+
+Part of the [MoCKA Deterministic Governance Architecture](https://github.com/m-sirius-k/MoCKA).
